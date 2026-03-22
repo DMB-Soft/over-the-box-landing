@@ -1,0 +1,140 @@
+---
+import Menu from "@lucide/astro/icons/menu";
+import X from "@lucide/astro/icons/x";
+import Stamp from "@lucide/astro/icons/stamp";
+---
+
+<header
+  id="navbar"
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+
+      <!-- Logo -->
+      <a
+        href="/"
+        class="flex items-center gap-2 font-heading font-bold text-xl navbar-text transition-colors duration-300"
+        aria-label="Over the Box főoldal"
+      >
+        <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-[var(--color-primary)] text-white shrink-0">
+          <Stamp size={16} />
+        </span>
+        <span>Over the Box</span>
+      </a>
+
+      <!-- Desktop nav -->
+      <nav class="hidden md:flex items-center gap-6">
+        <a
+          href="/#"
+          class="text-sm font-medium navbar-text transition-colors duration-300 hover:opacity-70"
+        >
+          Belépés
+        </a>
+        <a
+          href="/#"
+          class="inline-flex items-center px-5 py-2.5 rounded-xl text-sm font-semibold text-white transition-all duration-300 ease-out hover:brightness-110 active:scale-[0.98] shadow-sm"
+          style="background: var(--color-accent); box-shadow: 0 2px 12px color-mix(in srgb, var(--color-accent) 30%, transparent);"
+        >
+          Próbáld ki ingyen
+        </a>
+      </nav>
+
+      <!-- Mobile: CTA + hamburger -->
+      <div class="flex md:hidden items-center gap-3">
+        <a
+          href="/#"
+          class="inline-flex items-center px-3 py-1.5 rounded-xl text-sm font-semibold text-white transition-all duration-300 ease-out hover:brightness-110"
+          style="background: var(--color-accent);"
+        >
+          Próbáld ki ingyen
+        </a>
+        <button
+          id="mobile-menu-toggle"
+          aria-label="Menü megnyitása"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+          class="p-2 rounded-lg navbar-text transition-colors duration-300 hover:opacity-70"
+        >
+          <span id="icon-menu"><Menu size={22} /></span>
+          <span id="icon-close" class="hidden"><X size={22} /></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div
+    id="mobile-menu"
+    class="hidden md:hidden border-t border-[var(--color-border)] bg-[var(--color-surface)]"
+  >
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex flex-col gap-1">
+      <a
+        href="/#"
+        class="block px-3 py-2.5 rounded-lg text-sm font-medium text-[var(--color-text)] hover:bg-[var(--color-primary-light)] transition-colors duration-200"
+      >
+        Belépés
+      </a>
+    </div>
+  </div>
+</header>
+
+<script>
+  const navbar = document.getElementById("navbar");
+  const mobileMenu = document.getElementById("mobile-menu");
+  const toggle = document.getElementById("mobile-menu-toggle");
+  const iconMenu = document.getElementById("icon-menu");
+  const iconClose = document.getElementById("icon-close");
+
+  // Scroll-based background
+  const SCROLL_THRESHOLD = 50;
+
+  function updateNavbar() {
+    if (!navbar) return;
+    if (window.scrollY > SCROLL_THRESHOLD) {
+      navbar.classList.add("navbar-scrolled");
+    } else {
+      navbar.classList.remove("navbar-scrolled");
+    }
+  }
+
+  window.addEventListener("scroll", updateNavbar, { passive: true });
+  updateNavbar();
+
+  // Mobile menu toggle
+  toggle?.addEventListener("click", () => {
+    const isOpen = mobileMenu?.classList.contains("hidden") === false;
+
+    if (isOpen) {
+      mobileMenu?.classList.add("hidden");
+      iconMenu?.classList.remove("hidden");
+      iconClose?.classList.add("hidden");
+      toggle.setAttribute("aria-expanded", "false");
+      toggle.setAttribute("aria-label", "Menü megnyitása");
+    } else {
+      mobileMenu?.classList.remove("hidden");
+      iconMenu?.classList.add("hidden");
+      iconClose?.classList.remove("hidden");
+      toggle.setAttribute("aria-expanded", "true");
+      toggle.setAttribute("aria-label", "Menü bezárása");
+    }
+  });
+</script>
+
+<style>
+  #navbar {
+    /* Default: transparent */
+  }
+
+  #navbar.navbar-scrolled {
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.08), 0 1px 2px -1px rgb(0 0 0 / 0.06);
+  }
+
+  /* Text color: dark always (hero has light background) */
+  #navbar .navbar-text {
+    color: var(--color-text);
+  }
+</style>

@@ -1,0 +1,31 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import SocialProof from '../components/SocialProof.astro';
+import HowItWorks from '../components/HowItWorks.astro';
+import Features from '../components/Features.astro';
+import ForWhom from '../components/ForWhom.astro';
+import Pricing from '../components/Pricing.astro';
+import Contact from '../components/Contact.astro';
+import FAQ from '../components/FAQ.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="Over the Box — Digitális pecsétgyűjtő kisvállalkozásoknak"
+  description="Digitális pecsétgyűjtő kártya kisvállalkozásoknak. QR kód alapú hűségprogram — papír nélkül, egyszerűen. Próbáld ki ingyen!"
+>
+  <Navbar />
+  <main>
+    <Hero />
+    <SocialProof />
+    <HowItWorks />
+    <Features />
+    <ForWhom />
+    <Pricing />
+    <Contact />
+    <FAQ />
+  </main>
+  <Footer />
+</Layout>

@@ -1,0 +1,97 @@
+---
+---
+
+<section id="arak" class="pricing-section py-20 animate-on-scroll" style="background-color: var(--color-bg);">
+  <div class="max-w-7xl mx-auto px-6">
+
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold tracking-tight sm:text-4xl" style="color: var(--color-text);">
+        Árak
+      </h2>
+    </div>
+
+    <div class="flex justify-center">
+      <!-- Radial glow behind the card -->
+      <div class="relative">
+        <div
+          class="absolute inset-0 -z-10 pricing-glow"
+          aria-hidden="true"
+        ></div>
+
+        <!-- Gradient border wrapper -->
+        <div class="pricing-border-wrapper rounded-2xl p-[2px]">
+          <div
+            class="relative rounded-2xl p-10 text-center max-w-md w-full"
+            style="background-color: var(--color-surface);"
+          >
+            <!-- "Coming soon" badge with pulse -->
+            <div class="inline-flex items-center justify-center mb-6">
+              <span
+                class="pricing-badge px-4 py-1.5 rounded-full text-sm font-semibold tracking-wide"
+                style="background-color: var(--color-primary-light); color: var(--color-primary);"
+              >
+                Hamarosan
+              </span>
+            </div>
+
+            <p class="text-xl font-semibold mb-2" style="font-family: var(--font-heading); color: var(--color-text);">
+              Ingyenes indulás, kedvező havidíj.
+            </p>
+
+            <p class="text-base mb-8" style="color: var(--color-text-secondary);">
+              Kérdésed van? Írj nekünk!
+            </p>
+
+            <a
+              href="#kapcsolat"
+              class="inline-flex items-center justify-center px-7 py-3 rounded-xl text-base font-semibold text-white transition-all duration-200 hover:brightness-110 active:scale-[0.98]"
+              style="background-color: var(--color-primary);"
+            >
+              Kapcsolat
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .pricing-border-wrapper {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  }
+
+  .pricing-glow {
+    background: radial-gradient(
+      ellipse 60% 60% at 50% 50%,
+      color-mix(in srgb, var(--color-primary) 10%, transparent),
+      transparent 70%
+    );
+    width: 140%;
+    height: 140%;
+    top: -20%;
+    left: -20%;
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .pricing-badge {
+    animation: pricing-pulse 2.4s ease-in-out infinite;
+  }
+
+  @keyframes pricing-pulse {
+    0%, 100% {
+      box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-primary) 30%, transparent);
+    }
+    50% {
+      box-shadow: 0 0 0 6px color-mix(in srgb, var(--color-primary) 0%, transparent);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pricing-badge {
+      animation: none;
+    }
+  }
+</style>

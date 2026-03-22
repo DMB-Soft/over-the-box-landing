@@ -1,0 +1,309 @@
+---
+---
+
+<section
+  class="relative min-h-screen flex items-center bg-[var(--color-bg)] pt-32 pb-20 overflow-hidden"
+  aria-label="Hero"
+>
+  <!-- Background gradient blobs -->
+  <div
+    class="pointer-events-none absolute -top-40 -right-40 w-[900px] h-[900px] rounded-full"
+    style="background: radial-gradient(circle, var(--color-primary) 0%, transparent 65%); opacity: 0.12;"
+  ></div>
+  <div
+    class="pointer-events-none absolute -bottom-20 -left-20 w-[640px] h-[640px] rounded-full"
+    style="background: radial-gradient(circle, var(--color-accent) 0%, transparent 65%); opacity: 0.08;"
+  ></div>
+
+  <!-- Dot grid pattern -->
+  <div class="hero-dot-grid pointer-events-none absolute inset-0" aria-hidden="true"></div>
+
+  <div class="max-w-7xl mx-auto px-6 w-full relative">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+      <!-- Text column -->
+      <div class="flex flex-col gap-8">
+
+        <!-- Eyebrow badge -->
+        <div class="inline-flex self-start items-center gap-2 px-4 py-1.5 rounded-full text-sm font-medium"
+          style="background: var(--color-primary-light); color: var(--color-primary);">
+          <span class="inline-block w-2 h-2 rounded-full bg-[var(--color-primary)] animate-pulse"></span>
+          Ingyenesen elérhető
+        </div>
+
+        <!-- Headline -->
+        <h1
+          class="font-heading text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight"
+          style="color: var(--color-text);"
+        >
+          Törzsvásárlóid<br />
+          <span class="hero-gradient-text">egy koppintásra</span>
+        </h1>
+
+        <!-- Subline -->
+        <p class="text-lg lg:text-xl leading-relaxed max-w-md" style="color: var(--color-text-secondary);">
+          Digitális pecsétgyűjtő kártya kisvállalkozásoknak. Nincs papír, nincs plasztik —
+          csak elégedett visszatérő vendégek.
+        </p>
+
+        <!-- CTAs -->
+        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+          <a
+            href="#kapcsolat"
+            class="inline-flex items-center justify-center gap-2 px-10 py-5 rounded-2xl font-semibold text-white text-lg transition-all duration-300 ease-out hover:brightness-110 hover:scale-[1.02] active:scale-[0.98]"
+            style="background: var(--color-accent); box-shadow: 0 6px 28px color-mix(in srgb, var(--color-accent) 38%, transparent);"
+          >
+            Próbáld ki ingyen
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+              <path d="M3.75 9h10.5M9.75 4.5 14.25 9l-4.5 4.5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+
+          <a
+            href="#hogyan-mukodik"
+            class="inline-flex items-center gap-2 px-2 py-4 font-medium text-base transition-colors duration-150 group"
+            style="color: var(--color-primary);"
+          >
+            Megnézem hogyan működik
+            <svg
+              width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"
+              class="transition-transform duration-200 group-hover:translate-x-1"
+            >
+              <path d="M3.75 9h10.5M9.75 4.5 14.25 9l-4.5 4.5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Trust line -->
+        <p class="text-sm flex items-center gap-2.5" style="color: var(--color-text-secondary);">
+          <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true" style="flex-shrink: 0; color: var(--color-success);">
+            <path d="M8 1.333A6.667 6.667 0 1 0 8 14.667 6.667 6.667 0 0 0 8 1.333Zm3.138 5.138-3.667 3.667a.667.667 0 0 1-.943 0L4.862 8.47a.667.667 0 1 1 .943-.943L7.1 8.724l3.195-3.195a.667.667 0 0 1 .943.943Z" fill="currentColor"/>
+          </svg>
+          Ingyenes indulás · Nem kell bankkártya
+        </p>
+      </div>
+
+      <!-- Phone mockup column -->
+      <div class="flex justify-center lg:justify-end items-center">
+        <div class="relative phone-float">
+          <!-- Glow beneath the phone -->
+          <div
+            class="absolute inset-x-8 -bottom-8 h-24 blur-2xl rounded-full"
+            style="background: var(--color-primary); opacity: 0.35;"
+          ></div>
+
+          <!-- Phone outer shell -->
+          <div
+            class="relative rounded-[3rem] shadow-2xl overflow-hidden"
+            style="
+              width: 280px;
+              height: 580px;
+              background: #1a1a2e;
+              box-shadow:
+                0 0 0 2px #2d2d4a,
+                0 32px 64px rgba(0,0,0,0.35),
+                inset 0 1px 0 rgba(255,255,255,0.08);
+            "
+          >
+            <!-- Side buttons (decorative) -->
+            <div class="absolute -right-1 top-28 w-1 h-8 rounded-l-sm" style="background: #2d2d4a;"></div>
+            <div class="absolute -left-1 top-24 w-1 h-6 rounded-r-sm" style="background: #2d2d4a;"></div>
+            <div class="absolute -left-1 top-32 w-1 h-6 rounded-r-sm" style="background: #2d2d4a;"></div>
+
+            <!-- Screen bezel -->
+            <div class="absolute inset-[3px] rounded-[2.7rem] overflow-hidden" style="background: #0f0f1e;">
+
+              <!-- Status bar -->
+              <div class="flex items-center justify-between px-6 pt-4 pb-2" style="color: rgba(255,255,255,0.75);">
+                <span class="text-xs font-medium" style="font-family: var(--font-body);">9:41</span>
+                <div class="flex items-center gap-1.5">
+                  <!-- Signal bars -->
+                  <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true">
+                    <rect x="0" y="6" width="2.5" height="4" rx="0.5" fill="white" opacity="0.5"/>
+                    <rect x="3.5" y="4" width="2.5" height="6" rx="0.5" fill="white" opacity="0.7"/>
+                    <rect x="7" y="2" width="2.5" height="8" rx="0.5" fill="white" opacity="0.9"/>
+                    <rect x="10.5" y="0" width="2.5" height="10" rx="0.5" fill="white"/>
+                  </svg>
+                  <!-- Battery -->
+                  <svg width="22" height="12" viewBox="0 0 22 12" fill="none" aria-hidden="true">
+                    <rect x="0.5" y="0.5" width="18" height="11" rx="2.5" stroke="white" stroke-opacity="0.6"/>
+                    <rect x="2" y="2" width="13" height="8" rx="1.5" fill="white" opacity="0.9"/>
+                    <path d="M20 4v4a2 2 0 0 0 0-4Z" fill="white" opacity="0.6"/>
+                  </svg>
+                </div>
+              </div>
+
+              <!-- Notch / Dynamic island -->
+              <div
+                class="absolute top-3 left-1/2 -translate-x-1/2 rounded-full"
+                style="width: 96px; height: 30px; background: #0f0f1e; z-index: 10; box-shadow: 0 0 0 1px rgba(255,255,255,0.05);"
+              ></div>
+
+              <!-- App screen content -->
+              <div class="px-5 pb-6 flex flex-col gap-4" style="padding-top: 2.5rem;">
+
+                <!-- App header -->
+                <div class="flex items-center justify-between">
+                  <div>
+                    <p class="text-xs" style="color: rgba(255,255,255,0.45); font-family: var(--font-body);">Üdv vissza,</p>
+                    <p class="text-sm font-semibold text-white" style="font-family: var(--font-heading);">Kávézó Bella</p>
+                  </div>
+                  <div
+                    class="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold"
+                    style="background: var(--color-primary); color: white; font-family: var(--font-heading);"
+                  >KB</div>
+                </div>
+
+                <!-- Stamp card -->
+                <div
+                  class="rounded-2xl p-4 flex flex-col gap-3"
+                  style="background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%); box-shadow: 0 8px 24px rgba(79,70,229,0.3);"
+                >
+                  <!-- Card header -->
+                  <div class="flex items-center justify-between">
+                    <div>
+                      <p class="text-xs font-medium" style="color: rgba(255,255,255,0.55); font-family: var(--font-body);">Hűségkártya</p>
+                      <p class="text-sm font-bold text-white leading-tight" style="font-family: var(--font-heading);">10 kávé = 1 ingyenes</p>
+                    </div>
+                    <!-- Coffee cup icon -->
+                    <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background: rgba(255,255,255,0.1);">
+                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                        <path d="M4 7h9v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7Z" stroke="white" stroke-width="1.4" stroke-linejoin="round"/>
+                        <path d="M13 9h1.5a1.5 1.5 0 0 1 0 3H13" stroke="white" stroke-width="1.4" stroke-linecap="round"/>
+                        <path d="M7 4.5c0-1 1-1.5 1-2.5" stroke="white" stroke-width="1.3" stroke-linecap="round"/>
+                        <path d="M10 4.5c0-1 1-1.5 1-2.5" stroke="white" stroke-width="1.3" stroke-linecap="round"/>
+                      </svg>
+                    </div>
+                  </div>
+
+                  <!-- Stamp grid -->
+                  <div class="grid grid-cols-5 gap-2">
+                    <!-- Stamped (amber) -->
+                    <div class="w-full aspect-square rounded-lg flex items-center justify-center" style="background: var(--color-accent); box-shadow: 0 2px 8px color-mix(in srgb, var(--color-accent) 50%, transparent);">
+                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                        <path d="M2.5 7 5.5 10 11.5 4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </div>
+                    <div class="w-full aspect-square rounded-lg flex items-center justify-center" style="background: var(--color-accent); box-shadow: 0 2px 8px color-mix(in srgb, var(--color-accent) 50%, transparent);">
+                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                        <path d="M2.5 7 5.5 10 11.5 4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </div>
+                    <div class="w-full aspect-square rounded-lg flex items-center justify-center" style="background: var(--color-accent); box-shadow: 0 2px 8px color-mix(in srgb, var(--color-accent) 50%, transparent);">
+                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                        <path d="M2.5 7 5.5 10 11.5 4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </div>
+                    <div class="w-full aspect-square rounded-lg flex items-center justify-center" style="background: var(--color-accent); box-shadow: 0 2px 8px color-mix(in srgb, var(--color-accent) 50%, transparent);">
+                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                        <path d="M2.5 7 5.5 10 11.5 4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </div>
+                    <div class="w-full aspect-square rounded-lg flex items-center justify-center" style="background: var(--color-accent); box-shadow: 0 2px 8px color-mix(in srgb, var(--color-accent) 50%, transparent);">
+                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                        <path d="M2.5 7 5.5 10 11.5 4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </div>
+                    <!-- Empty stamps -->
+                    <div class="w-full aspect-square rounded-lg" style="background: rgba(255,255,255,0.1); border: 1.5px dashed rgba(255,255,255,0.2);"></div>
+                    <div class="w-full aspect-square rounded-lg" style="background: rgba(255,255,255,0.1); border: 1.5px dashed rgba(255,255,255,0.2);"></div>
+                    <div class="w-full aspect-square rounded-lg" style="background: rgba(255,255,255,0.1); border: 1.5px dashed rgba(255,255,255,0.2);"></div>
+                    <!-- 9th: progress hint -->
+                    <div class="w-full aspect-square rounded-lg flex items-center justify-center" style="background: rgba(255,255,255,0.1); border: 1.5px dashed rgba(255,255,255,0.2);">
+                    </div>
+                    <!-- 10th: trophy / reward slot -->
+                    <div class="w-full aspect-square rounded-lg flex items-center justify-center" style="background: rgba(255,255,255,0.07); border: 1.5px dashed rgba(255,255,255,0.3);">
+                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                        <path d="M7 1.5 8.545 5.06l3.88.563-2.808 2.735.663 3.863L7 10.5l-3.28 1.72.663-3.862L1.575 5.624l3.88-.563L7 1.5Z" stroke="rgba(255,255,255,0.4)" stroke-width="1.3" stroke-linejoin="round"/>
+                      </svg>
+                    </div>
+                  </div>
+
+                  <!-- Progress label -->
+                  <div class="flex items-center justify-between">
+                    <p class="text-xs" style="color: rgba(255,255,255,0.5); font-family: var(--font-body);">5 / 10 pecsét</p>
+                    <p class="text-xs font-semibold" style="color: var(--color-accent); font-family: var(--font-body);">Még 5 a jutalmadhoz!</p>
+                  </div>
+                </div>
+
+                <!-- Scan CTA button on screen -->
+                <button
+                  class="w-full rounded-xl py-3 text-sm font-semibold text-white flex items-center justify-center gap-2"
+                  style="background: var(--color-primary); font-family: var(--font-heading); pointer-events: none;"
+                  tabindex="-1"
+                  aria-hidden="true"
+                >
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                    <rect x="2" y="2" width="4" height="4" rx="0.75" stroke="white" stroke-width="1.5"/>
+                    <rect x="10" y="2" width="4" height="4" rx="0.75" stroke="white" stroke-width="1.5"/>
+                    <rect x="2" y="10" width="4" height="4" rx="0.75" stroke="white" stroke-width="1.5"/>
+                    <path d="M10 10h1.5m2.5 0H12.5m0 0v1.5m0 2.5v-1.5m-2.5 1.5h4" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                  </svg>
+                  QR kód beolvasása
+                </button>
+
+                <!-- Recent activity -->
+                <div class="flex flex-col gap-2">
+                  <p class="text-xs font-medium" style="color: rgba(255,255,255,0.4); font-family: var(--font-body);">Legutóbbi látogatások</p>
+                  <div class="flex items-center justify-between py-1.5">
+                    <div class="flex items-center gap-2">
+                      <div class="w-6 h-6 rounded-full flex items-center justify-center" style="background: rgba(245,158,11,0.2);">
+                        <div class="w-2.5 h-2.5 rounded-full" style="background: var(--color-accent);"></div>
+                      </div>
+                      <p class="text-xs text-white" style="font-family: var(--font-body);">Pecsét megszerezve</p>
+                    </div>
+                    <p class="text-xs" style="color: rgba(255,255,255,0.35); font-family: var(--font-body);">ma</p>
+                  </div>
+                  <div class="flex items-center justify-between py-1.5">
+                    <div class="flex items-center gap-2">
+                      <div class="w-6 h-6 rounded-full flex items-center justify-center" style="background: rgba(245,158,11,0.2);">
+                        <div class="w-2.5 h-2.5 rounded-full" style="background: var(--color-accent);"></div>
+                      </div>
+                      <p class="text-xs text-white" style="font-family: var(--font-body);">Pecsét megszerezve</p>
+                    </div>
+                    <p class="text-xs" style="color: rgba(255,255,255,0.35); font-family: var(--font-body);">tegnap</p>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Dot grid overlay */
+  .hero-dot-grid {
+    background-image: radial-gradient(circle, var(--color-primary) 1px, transparent 1px);
+    background-size: 24px 24px;
+    opacity: 0.08;
+  }
+
+  /* Gradient text on headline accent */
+  .hero-gradient-text {
+    background: linear-gradient(135deg, var(--color-primary) 0%, #818CF8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Phone float animation */
+  @keyframes phone-float {
+    0%, 100% { transform: translateY(0px); }
+    50%       { transform: translateY(-8px); }
+  }
+
+  .phone-float {
+    animation: phone-float 3.5s ease-in-out infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .phone-float {
+      animation: none;
+    }
+  }
+</style>

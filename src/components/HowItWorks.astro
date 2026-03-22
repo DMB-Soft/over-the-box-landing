@@ -1,0 +1,152 @@
+---
+import UserPlus from "@lucide/astro/icons/user-plus";
+import QrCode from "@lucide/astro/icons/qr-code";
+import ChartBar from "@lucide/astro/icons/chart-bar";
+import ScanLine from "@lucide/astro/icons/scan-line";
+import Stamp from "@lucide/astro/icons/stamp";
+import Gift from "@lucide/astro/icons/gift";
+
+const merchantSteps = [
+  {
+    icon: UserPlus,
+    text: "Regisztrálj és hozd létre a kártyádat",
+  },
+  {
+    icon: QrCode,
+    text: "Nyomtasd ki a QR kódot és tedd ki a pultodra",
+  },
+  {
+    icon: ChartBar,
+    text: "Kövesd az eredményeket a dashboardon",
+  },
+];
+
+const customerSteps = [
+  {
+    icon: ScanLine,
+    text: "Szkenneld be a QR kódot",
+  },
+  {
+    icon: Stamp,
+    text: "Gyűjtsd a pecséteket",
+  },
+  {
+    icon: Gift,
+    text: "Váltsd be a jutalmakat",
+  },
+];
+---
+
+<section id="hogyan-mukodik" class="py-20" style="background-color: var(--color-surface);">
+  <div class="max-w-7xl mx-auto px-6">
+
+    <div class="text-center mb-16">
+      <h2 class="text-3xl font-bold tracking-tight sm:text-4xl mb-3" style="color: var(--color-text);">
+        Hogyan működik?
+      </h2>
+      <p class="text-lg" style="color: var(--color-text-secondary);">
+        Kereskedőknek és vásárlóknak egyaránt egyszerű.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 gap-10 lg:grid-cols-2">
+
+      <!-- Merchant column -->
+      <div
+        class="rounded-2xl border p-8 transition-all duration-300 ease-out hover:scale-[1.01] hover:shadow-md"
+        style="border-color: var(--color-border); background-color: var(--color-bg); border-top: 3px solid var(--color-primary);"
+      >
+        <div class="flex items-center gap-3 mb-8">
+          <div class="flex h-8 w-8 items-center justify-center rounded-lg" style="background-color: var(--color-primary);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+              <polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold" style="color: var(--color-text);">Kereskedőknek</h3>
+        </div>
+
+        <ol class="space-y-0">
+          {merchantSteps.map((step, index) => (
+            <li class="flex gap-4">
+              <div class="flex flex-col items-center">
+                <div
+                  class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full font-bold text-sm"
+                  style="background-color: var(--color-primary); color: white; box-shadow: 0 2px 8px color-mix(in srgb, var(--color-primary) 35%, transparent);"
+                >
+                  {index + 1}
+                </div>
+                {index < merchantSteps.length - 1 && (
+                  <div class="mt-1 mb-1 w-px flex-1" style="background-color: var(--color-border); min-height: 2rem;"></div>
+                )}
+              </div>
+              <div class="pt-2.5" style={index < merchantSteps.length - 1 ? "padding-bottom: 1.5rem;" : ""}>
+                <div class="flex items-center gap-2 mb-1">
+                  <step.icon
+                    size={22}
+                    style="color: var(--color-primary);"
+                    aria-hidden="true"
+                  />
+                </div>
+                <p class="text-sm leading-relaxed" style="color: var(--color-text);">{step.text}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+
+      <!-- Customer column -->
+      <div
+        class="rounded-2xl border p-8 transition-all duration-300 ease-out hover:scale-[1.01] hover:shadow-md"
+        style="border-color: var(--color-border); background-color: var(--color-bg); border-top: 3px solid var(--color-accent);"
+      >
+        <div class="flex items-center gap-3 mb-8">
+          <div class="flex h-8 w-8 items-center justify-center rounded-lg" style="background-color: var(--color-accent);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold" style="color: var(--color-text);">Vásárlóknak</h3>
+        </div>
+
+        <ol class="space-y-0">
+          {customerSteps.map((step, index) => (
+            <li class="flex gap-4">
+              <div class="flex flex-col items-center">
+                <div
+                  class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full font-bold text-sm"
+                  style="background-color: var(--color-accent); color: white; box-shadow: 0 2px 8px color-mix(in srgb, var(--color-accent) 35%, transparent);"
+                >
+                  {index + 1}
+                </div>
+                {index < customerSteps.length - 1 && (
+                  <div class="mt-1 mb-1 w-px flex-1" style="background-color: var(--color-border); min-height: 2rem;"></div>
+                )}
+              </div>
+              <div class="pt-2.5" style={index < customerSteps.length - 1 ? "padding-bottom: 1.5rem;" : ""}>
+                <div class="flex items-center gap-2 mb-1">
+                  <step.icon
+                    size={22}
+                    style="color: var(--color-accent);"
+                    aria-hidden="true"
+                  />
+                </div>
+                <p class="text-sm leading-relaxed" style="color: var(--color-text);">{step.text}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  @media (prefers-reduced-motion: reduce) {
+    div[class*="hover:scale"] {
+      transition: none;
+    }
+  }
+</style>

@@ -1,0 +1,133 @@
+---
+import ChevronDown from "@lucide/astro/icons/chevron-down";
+
+const items = [
+  {
+    question: "Mi az Over the Box?",
+    answer:
+      "Digitális pecsétgyűjtő app kisvállalkozásoknak. Pecsétkártya a vendéged telefonján — papír és plasztik nélkül.",
+  },
+  {
+    question: "Mennyibe kerül?",
+    answer:
+      "Hamarosan részletes áraink is elérhetők lesznek. Az indulás ingyenes — írj nekünk, ha érdekel!",
+  },
+  {
+    question: "Kell hozzá külön app az ügyfeleknek?",
+    answer:
+      "Nem! Az Over the Box egy PWA (Progressive Web App), ami bármilyen telefonon fut. Nem kell letölteni az App Store-ból vagy a Google Play-ből.",
+  },
+  {
+    question: "Hogyan gyűjtenek pecsétet a vendégeim?",
+    answer:
+      "A pultodra kihelyezett QR kódot szkennelik a telefonjukkal. Egy másodperc az egész — nincs várakozás, nincs bonyodalom.",
+  },
+  {
+    question: "Biztonságos az adatkezelés?",
+    answer:
+      "Igen. GDPR-kompatibilis adatkezelés, titkosított adattárolás. A vendégeid adatai biztonságban vannak.",
+  },
+  {
+    question: "Papír kártya helyett miért digitális?",
+    answer:
+      "Nem vész el, nem felejtik otthon, te meg valós adatokat kapsz a vendégeid szokásairól. Mindenki nyer.",
+  },
+];
+---
+
+<section id="gyik" class="py-20 animate-on-scroll" style="background-color: var(--color-bg);">
+  <div class="max-w-7xl mx-auto px-6">
+
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold tracking-tight sm:text-4xl" style="color: var(--color-text);">
+        Gyakran ismételt kérdések
+      </h2>
+    </div>
+
+    <div class="max-w-2xl mx-auto">
+      {items.map((item, index) => (
+        <details
+          class="faq-item group"
+          style={index < items.length - 1 ? "border-bottom: 1px solid var(--color-border);" : ""}
+        >
+          <summary
+            class="flex items-center justify-between gap-4 py-5 cursor-pointer list-none select-none"
+            style="color: var(--color-text);"
+          >
+            <span class="text-lg font-semibold leading-snug pr-2" style="font-family: var(--font-heading);">
+              {item.question}
+            </span>
+            <span class="faq-icon shrink-0 transition-transform duration-200" style="color: var(--color-text-secondary);">
+              <ChevronDown size={20} aria-hidden="true" />
+            </span>
+          </summary>
+
+          <div class="faq-body">
+            <p class="text-base leading-relaxed pb-5" style="color: var(--color-text-secondary);">
+              {item.answer}
+            </p>
+          </div>
+        </details>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .faq-item summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-item {
+    border-radius: 8px;
+    padding-left: 12px;
+    padding-right: 12px;
+    margin-left: -12px;
+    margin-right: -12px;
+    border-left: 3px solid transparent;
+    transition: background-color 200ms ease-out, border-left-color 200ms ease-out;
+  }
+
+  .faq-item:hover {
+    background-color: color-mix(in srgb, var(--color-primary) 4%, transparent);
+  }
+
+  .faq-item[open] {
+    border-left-color: var(--color-primary);
+  }
+
+  .faq-item[open] .faq-icon {
+    transform: rotate(180deg);
+  }
+
+  .faq-item summary:hover span:first-child {
+    color: var(--color-primary);
+  }
+
+  /* Animate the answer body */
+  .faq-body {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 280ms ease-out;
+    overflow: hidden;
+  }
+
+  .faq-body > p {
+    overflow: hidden;
+    min-height: 0;
+  }
+
+  details[open] .faq-body {
+    grid-template-rows: 1fr;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .faq-item {
+      transition: none;
+    }
+    .faq-body {
+      transition: none;
+    }
+  }
+</style>

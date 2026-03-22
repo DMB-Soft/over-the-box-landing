@@ -1,0 +1,149 @@
+---
+import Stamp from "@lucide/astro/icons/stamp";
+---
+
+<footer class="footer-root" style="background-color: var(--color-text);">
+  <!-- Gradient top border line -->
+  <div class="footer-top-line" aria-hidden="true"></div>
+
+  <!-- Main content -->
+  <div class="max-w-7xl mx-auto px-6 py-16">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-12">
+
+      <!-- Column 1: Brand -->
+      <div class="sm:col-span-2 lg:col-span-1">
+        <a
+          href="/"
+          class="inline-flex items-center gap-2 font-heading font-bold text-lg text-white mb-3"
+          aria-label="Over the Box főoldal"
+        >
+          <span class="flex items-center justify-center w-7 h-7 rounded-md bg-[var(--color-primary)] text-white shrink-0">
+            <Stamp size={14} />
+          </span>
+          <span>Over the Box</span>
+        </a>
+        <p class="text-sm text-stone-400 leading-relaxed max-w-xs">
+          Digitális pecsétgyűjtő kisvállalkozásoknak.
+        </p>
+      </div>
+
+      <!-- Column 2: Termék -->
+      <div>
+        <h3 class="text-white font-semibold text-sm uppercase tracking-wider mb-4">
+          Termék
+        </h3>
+        <ul class="space-y-3">
+          <li>
+            <a href="#funkciok" class="footer-link text-sm text-stone-400">
+              Funkciók
+            </a>
+          </li>
+          <li>
+            <a href="#arak" class="footer-link text-sm text-stone-400">
+              Árak
+            </a>
+          </li>
+          <li>
+            <a href="#gyik" class="footer-link text-sm text-stone-400">
+              GYIK
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Cég -->
+      <div>
+        <h3 class="text-white font-semibold text-sm uppercase tracking-wider mb-4">
+          Cég
+        </h3>
+        <ul class="space-y-3">
+          <li>
+            <a href="/#" class="footer-link text-sm text-stone-400">
+              Rólunk
+            </a>
+          </li>
+          <li>
+            <a href="#kapcsolat" class="footer-link text-sm text-stone-400">
+              Kapcsolat
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Column 4: Jogi -->
+      <div>
+        <h3 class="text-white font-semibold text-sm uppercase tracking-wider mb-4">
+          Jogi
+        </h3>
+        <ul class="space-y-3">
+          <li>
+            <a href="/#" class="footer-link text-sm text-stone-400">
+              ÁSZF
+            </a>
+          </li>
+          <li>
+            <a href="/#" class="footer-link text-sm text-stone-400">
+              Adatkezelés
+            </a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Bottom bar -->
+  <div class="border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-6 py-6">
+      <p class="text-sm text-stone-500 text-center">
+        &copy; 2026 DMB Soft Kft. &middot; Minden jog fenntartva.
+      </p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer-root {
+    position: relative;
+  }
+
+  .footer-top-line {
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  }
+
+  .footer-link {
+    position: relative;
+    display: inline-block;
+    transition: color 200ms ease-out;
+    text-decoration: none;
+  }
+
+  .footer-link::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: currentColor;
+    transition: width 220ms ease-out;
+  }
+
+  .footer-link:hover {
+    color: #fff;
+  }
+
+  .footer-link:hover::after {
+    width: 100%;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .footer-link::after {
+      transition: none;
+    }
+    .footer-link {
+      transition: none;
+    }
+  }
+</style>

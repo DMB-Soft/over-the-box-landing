@@ -1,0 +1,209 @@
+---
+import Send from "@lucide/astro/icons/send";
+---
+
+<section id="kapcsolat" class="contact-section py-20 animate-on-scroll" style="background-color: var(--color-surface);">
+  <!-- Decorative blob top-right -->
+  <div class="contact-blob" aria-hidden="true"></div>
+
+  <div class="max-w-7xl mx-auto px-6 relative">
+
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold tracking-tight sm:text-4xl mb-3" style="color: var(--color-text);">
+        Kapcsolat
+      </h2>
+      <p class="text-lg" style="color: var(--color-text-secondary);">
+        Kérdésed van? Írj nekünk, és hamarosan válaszolunk!
+      </p>
+    </div>
+
+    <div class="flex justify-center">
+      <div
+        class="contact-card w-full max-w-lg rounded-2xl border p-8 sm:p-10 transition-all duration-300"
+        style="border-color: var(--color-border); background-color: var(--color-surface); box-shadow: 0 4px 24px rgba(0,0,0,0.06);"
+      >
+
+        <!-- Form -->
+        <form id="contact-form" novalidate>
+          <div class="flex flex-col gap-5">
+
+            <div class="flex flex-col gap-1.5">
+              <label
+                for="contact-name"
+                class="text-sm font-medium"
+                style="color: var(--color-text);"
+              >
+                Név <span aria-hidden="true" style="color: var(--color-primary);">*</span>
+              </label>
+              <input
+                id="contact-name"
+                name="name"
+                type="text"
+                required
+                autocomplete="name"
+                placeholder="Kovács Anna"
+                class="rounded-lg py-3 px-4 text-base border outline-none transition-shadow duration-150"
+                style="border-color: var(--color-border); color: var(--color-text); background-color: var(--color-bg);"
+              />
+            </div>
+
+            <div class="flex flex-col gap-1.5">
+              <label
+                for="contact-email"
+                class="text-sm font-medium"
+                style="color: var(--color-text);"
+              >
+                Email <span aria-hidden="true" style="color: var(--color-primary);">*</span>
+              </label>
+              <input
+                id="contact-email"
+                name="email"
+                type="email"
+                required
+                autocomplete="email"
+                placeholder="kovacs.anna@example.com"
+                class="rounded-lg py-3 px-4 text-base border outline-none transition-shadow duration-150"
+                style="border-color: var(--color-border); color: var(--color-text); background-color: var(--color-bg);"
+              />
+            </div>
+
+            <div class="flex flex-col gap-1.5">
+              <label
+                for="contact-business"
+                class="text-sm font-medium"
+                style="color: var(--color-text);"
+              >
+                Üzlet neve
+              </label>
+              <input
+                id="contact-business"
+                name="business"
+                type="text"
+                autocomplete="organization"
+                placeholder="Bella Kávézó"
+                class="rounded-lg py-3 px-4 text-base border outline-none transition-shadow duration-150"
+                style="border-color: var(--color-border); color: var(--color-text); background-color: var(--color-bg);"
+              />
+            </div>
+
+            <div class="flex flex-col gap-1.5">
+              <label
+                for="contact-message"
+                class="text-sm font-medium"
+                style="color: var(--color-text);"
+              >
+                Üzenet <span aria-hidden="true" style="color: var(--color-primary);">*</span>
+              </label>
+              <textarea
+                id="contact-message"
+                name="message"
+                required
+                rows="4"
+                placeholder="Miben segíthetünk?"
+                class="rounded-lg py-3 px-4 text-base border outline-none transition-shadow duration-150 resize-none"
+                style="border-color: var(--color-border); color: var(--color-text); background-color: var(--color-bg);"
+              ></textarea>
+            </div>
+
+            <button
+              type="submit"
+              class="contact-submit inline-flex items-center justify-center gap-2 w-full py-3.5 px-6 rounded-xl text-base font-semibold text-white transition-all duration-200 hover:brightness-110 active:scale-[0.98] mt-1"
+              style="background-color: var(--color-accent);"
+            >
+              Küldés
+              <Send size={18} aria-hidden="true" />
+            </button>
+
+          </div>
+        </form>
+
+        <!-- Success message (hidden by default) -->
+        <div
+          id="contact-success"
+          class="hidden text-center py-8"
+          role="alert"
+          aria-live="polite"
+        >
+          <div
+            class="inline-flex items-center justify-center w-14 h-14 rounded-full mb-5"
+            style="background-color: color-mix(in srgb, var(--color-success) 12%, transparent);"
+          >
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+              <path d="M5.5 14 11 19.5 22.5 8" stroke="#16A34A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <p class="text-lg font-semibold mb-2" style="font-family: var(--font-heading); color: var(--color-text);">
+            Köszönjük!
+          </p>
+          <p class="text-base" style="color: var(--color-text-secondary);">
+            Hamarosan felvesszük veled a kapcsolatot.
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .contact-section {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(
+      160deg,
+      color-mix(in srgb, var(--color-accent) 5%, var(--color-surface)) 0%,
+      var(--color-surface) 50%
+    ) !important;
+  }
+
+  .contact-blob {
+    position: absolute;
+    top: -60px;
+    right: -80px;
+    width: 320px;
+    height: 320px;
+    border-radius: 50% 40% 60% 30% / 50% 60% 40% 50%;
+    background: radial-gradient(
+      ellipse at center,
+      color-mix(in srgb, var(--color-accent) 12%, transparent),
+      transparent 70%
+    );
+    opacity: 0.6;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  #contact-form input:focus,
+  #contact-form textarea:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--color-primary);
+    border-color: var(--color-primary);
+  }
+
+  .contact-card:focus-within {
+    border-color: color-mix(in srgb, var(--color-primary) 40%, var(--color-border)) !important;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.06), 0 0 0 1px color-mix(in srgb, var(--color-primary) 15%, transparent) !important;
+  }
+
+  .contact-submit:hover {
+    box-shadow: 0 8px 25px color-mix(in srgb, var(--color-accent) 35%, transparent), 0 4px 10px color-mix(in srgb, var(--color-accent) 20%, transparent);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .contact-blob {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  const form = document.getElementById("contact-form") as HTMLFormElement | null;
+  const successMsg = document.getElementById("contact-success");
+
+  form?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    form.classList.add("hidden");
+    successMsg?.classList.remove("hidden");
+  });
+</script>
