@@ -3,10 +3,7 @@ import Send from "@lucide/astro/icons/send";
 ---
 
 <section id="kapcsolat" class="contact-section py-24 animate-on-scroll">
-  <!-- Decorative blob top-right -->
-  <div class="contact-blob" aria-hidden="true"></div>
-
-  <div class="max-w-7xl mx-auto px-6 relative">
+  <div class="max-w-7xl mx-auto px-6">
 
     <div class="text-center mb-12">
       <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight leading-tight mb-3" style="color: var(--color-text);">
@@ -148,26 +145,7 @@ import Send from "@lucide/astro/icons/send";
 
 <style>
   .contact-section {
-    position: relative;
-    overflow: hidden;
     background: color-mix(in srgb, var(--color-accent-light) 25%, var(--color-surface));
-  }
-
-  .contact-blob {
-    position: absolute;
-    top: -60px;
-    right: -80px;
-    width: 320px;
-    height: 320px;
-    border-radius: 50% 40% 60% 30% / 50% 60% 40% 50%;
-    background: radial-gradient(
-      ellipse at center,
-      color-mix(in srgb, var(--color-accent) 12%, transparent),
-      transparent 70%
-    );
-    opacity: 0.03;
-    pointer-events: none;
-    z-index: 0;
   }
 
   #contact-form input:focus,
@@ -186,11 +164,6 @@ import Send from "@lucide/astro/icons/send";
     box-shadow: 0 8px 25px color-mix(in srgb, var(--color-accent) 35%, transparent), 0 4px 10px color-mix(in srgb, var(--color-accent) 20%, transparent);
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    .contact-blob {
-      display: none;
-    }
-  }
 </style>
 
 <script>
