@@ -35,6 +35,15 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
 }
 
+h1, h2 {
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+h3 {
+  letter-spacing: -0.01em;
+}
+
 ::selection {
   background: color-mix(in srgb, var(--color-primary) 20%, transparent);
 }
