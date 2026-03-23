@@ -55,3 +55,23 @@ Use the `/frontend-design` skill. This should look polished and distinctive — 
 - Don't use emojis in the actual page (wiki uses them for readability, the page should use proper icons)
 - Don't overcomplicate — single page, no routing needed
 - Don't add English yet — HU only for MVP
+
+## Design Context
+
+### Users
+Hungarian small business owners — café, bakery, salon, restaurant operators. Non-technical, time-poor, often looking at this on a phone between customers. The job: decide if this loyalty card tool is right for their business, in under 60 seconds.
+
+### Brand Personality
+**Warm, sharp, confident.** Like talking to a smart friend who runs a coffee shop.
+
+### Aesthetic Direction
+- **Reference**: linear.app — minimal, sharp typography, smooth micro-interactions, purposeful whitespace
+- **Anti-references**: Enterprise/corporate (salesforce.com), cheap/budget feel (cramped, clashing, banner-ad energy)
+- **Theme**: Light mode only. Warm stone neutrals, not cold grays.
+
+### Design Principles
+1. **Earn every pixel** — No decorative filler. Every element serves comprehension, trust, or conversion.
+2. **Warm precision** — Linear's sharpness meets coffee-shop warmth. Tight spacing and clean type, but approachable.
+3. **Obvious over clever** — Value proposition in 5 seconds. No jargon, no abstract illustrations.
+4. **Motion with purpose** — Subtle animations that guide attention, never distract. Respect prefers-reduced-motion.
+5. **Mobile-first honesty** — Every layout decision starts at 375px.

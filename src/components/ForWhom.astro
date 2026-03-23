@@ -28,7 +28,7 @@ const merchants = [
 ];
 ---
 
-<section id="kiknek" class="forwhom-section py-20" style="background-color: var(--color-surface);">
+<section id="kiknek" class="animate-on-scroll py-28" style="background-color: var(--color-surface);">
   <div class="max-w-7xl mx-auto px-6">
     <div class="text-center mb-16">
       <h2
@@ -45,8 +45,8 @@ const merchants = [
     <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
       {merchants.map(({ Icon, title, description }) => (
         <div
-          class="merchant-card flex flex-col items-center text-center gap-5 rounded-2xl px-6 py-8 transition-all duration-300 ease-out hover:-translate-y-1 cursor-default"
-          style="border: 1px solid var(--color-border); border-left: 4px solid var(--color-accent); background-color: var(--color-surface);"
+          class="merchant-card flex flex-col items-center text-center gap-5 rounded-2xl px-6 py-8 transition-all duration-300 ease-out hover:shadow-md hover:-translate-y-0.5 cursor-default"
+          style="border: 1px solid var(--color-border); background-color: var(--color-surface);"
         >
           <div
             class="w-20 h-20 rounded-2xl flex items-center justify-center"
@@ -72,24 +72,6 @@ const merchants = [
 </section>
 
 <style>
-  .forwhom-section {
-    background-image: repeating-linear-gradient(
-      -45deg,
-      transparent,
-      transparent 20px,
-      color-mix(in srgb, var(--color-accent) 4%, transparent) 20px,
-      color-mix(in srgb, var(--color-accent) 4%, transparent) 21px
-    );
-  }
-
-  /* Ensure the surface color sits on top of the pattern via a pseudo-element isn't feasible here,
-     so we use a very subtle opacity that doesn't compete with the cards */
-
-  .merchant-card:hover {
-    box-shadow: 0 8px 24px color-mix(in srgb, var(--color-accent) 20%, transparent),
-                0 2px 8px color-mix(in srgb, var(--color-accent) 12%, transparent);
-  }
-
   @media (prefers-reduced-motion: reduce) {
     .merchant-card {
       transition: none;

@@ -3,16 +3,18 @@ import TrendingUp from "@lucide/astro/icons/trending-up";
 ---
 
 <div
-  class="w-full py-6 px-6"
+  class="w-full py-5 px-6"
   style="background-color: var(--color-primary-light); border-bottom: 1px solid color-mix(in srgb, var(--color-primary) 15%, transparent); box-shadow: 0 2px 8px color-mix(in srgb, var(--color-primary) 8%, transparent);"
 >
-  <p class="flex items-center justify-center gap-3 flex-wrap text-base" style="color: var(--color-text-secondary);">
-    <TrendingUp
-      size={20}
-      aria-hidden="true"
-      style="color: var(--color-primary); flex-shrink: 0;"
-    />
-    <span class="font-bold text-lg" style="color: var(--color-primary);">A visszatérő vásárlók 67%-kal többet költenek</span>
-    <span>— Bain & Company</span>
-  </p>
+  <div class="flex flex-col items-center gap-2 text-center">
+    <div class="flex items-center gap-2">
+      <TrendingUp
+        size={22}
+        aria-hidden="true"
+        style="color: var(--color-primary); flex-shrink: 0;"
+      />
+      <span class="text-4xl font-bold" style="color: var(--color-primary);">67%</span>
+    </div>
+    <p class="text-base" style="color: var(--color-text-secondary);">A visszatérő vásárlók ennyivel többet költenek — Bain & Company</p>
+  </div>
 </div>

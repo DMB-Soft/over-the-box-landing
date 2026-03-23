@@ -1,7 +1,7 @@
 ---
 ---
 
-<section id="arak" class="pricing-section py-20 animate-on-scroll" style="background-color: var(--color-bg);">
+<section id="arak" class="animate-on-scroll py-16" style="background-color: var(--color-bg);">
   <div class="max-w-7xl mx-auto px-6">
 
     <div class="text-center mb-12">
@@ -24,7 +24,7 @@
             class="relative rounded-2xl p-10 text-center max-w-md w-full"
             style="background-color: var(--color-surface);"
           >
-            <!-- "Coming soon" badge with pulse -->
+            <!-- "Coming soon" badge -->
             <div class="inline-flex items-center justify-center mb-6">
               <span
                 class="pricing-badge px-4 py-1.5 rounded-full text-sm font-semibold tracking-wide"
@@ -76,22 +76,4 @@
     pointer-events: none;
   }
 
-  .pricing-badge {
-    animation: pricing-pulse 2.4s ease-in-out infinite;
-  }
-
-  @keyframes pricing-pulse {
-    0%, 100% {
-      box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-primary) 30%, transparent);
-    }
-    50% {
-      box-shadow: 0 0 0 6px color-mix(in srgb, var(--color-primary) 0%, transparent);
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .pricing-badge {
-      animation: none;
-    }
-  }
 </style>

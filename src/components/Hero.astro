@@ -2,7 +2,7 @@
 ---
 
 <section
-  class="relative min-h-screen flex items-center bg-[var(--color-bg)] pt-32 pb-20 overflow-hidden"
+  class="relative min-h-screen flex items-center bg-[var(--color-bg)] pt-32 pb-32 overflow-hidden"
   aria-label="Hero"
 >
   <!-- Background gradient blobs -->
@@ -14,9 +14,6 @@
     class="pointer-events-none absolute -bottom-20 -left-20 w-[640px] h-[640px] rounded-full"
     style="background: radial-gradient(circle, var(--color-accent) 0%, transparent 65%); opacity: 0.08;"
   ></div>
-
-  <!-- Dot grid pattern -->
-  <div class="hero-dot-grid pointer-events-none absolute inset-0" aria-hidden="true"></div>
 
   <div class="max-w-7xl mx-auto px-6 w-full relative">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -37,7 +34,7 @@
           style="color: var(--color-text);"
         >
           Törzsvásárlóid<br />
-          <span class="hero-gradient-text">egy koppintásra</span>
+          <span style="color: var(--color-primary);">egy koppintásra</span>
         </h1>
 
         <!-- Subline -->
@@ -204,15 +201,13 @@
                         <path d="M2.5 7 5.5 10 11.5 4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                       </svg>
                     </div>
-                    <!-- Empty stamps -->
-                    <div class="w-full aspect-square rounded-lg" style="background: rgba(255,255,255,0.1); border: 1.5px dashed rgba(255,255,255,0.2);"></div>
-                    <div class="w-full aspect-square rounded-lg" style="background: rgba(255,255,255,0.1); border: 1.5px dashed rgba(255,255,255,0.2);"></div>
-                    <div class="w-full aspect-square rounded-lg" style="background: rgba(255,255,255,0.1); border: 1.5px dashed rgba(255,255,255,0.2);"></div>
-                    <!-- 9th: progress hint -->
-                    <div class="w-full aspect-square rounded-lg flex items-center justify-center" style="background: rgba(255,255,255,0.1); border: 1.5px dashed rgba(255,255,255,0.2);">
-                    </div>
+                    <!-- Empty stamps (clickable) -->
+                    <div class="stamp-empty w-full aspect-square rounded-lg cursor-pointer transition-transform duration-150 hover:scale-110" style="background: rgba(255,255,255,0.1); border: 1.5px dashed rgba(255,255,255,0.2);"></div>
+                    <div class="stamp-empty w-full aspect-square rounded-lg cursor-pointer transition-transform duration-150 hover:scale-110" style="background: rgba(255,255,255,0.1); border: 1.5px dashed rgba(255,255,255,0.2);"></div>
+                    <div class="stamp-empty w-full aspect-square rounded-lg cursor-pointer transition-transform duration-150 hover:scale-110" style="background: rgba(255,255,255,0.1); border: 1.5px dashed rgba(255,255,255,0.2);"></div>
+                    <div class="stamp-empty w-full aspect-square rounded-lg cursor-pointer transition-transform duration-150 hover:scale-110" style="background: rgba(255,255,255,0.1); border: 1.5px dashed rgba(255,255,255,0.2);"></div>
                     <!-- 10th: trophy / reward slot -->
-                    <div class="w-full aspect-square rounded-lg flex items-center justify-center" style="background: rgba(255,255,255,0.07); border: 1.5px dashed rgba(255,255,255,0.3);">
+                    <div class="stamp-empty w-full aspect-square rounded-lg flex items-center justify-center cursor-pointer transition-transform duration-150 hover:scale-110" style="background: rgba(255,255,255,0.07); border: 1.5px dashed rgba(255,255,255,0.3);">
                       <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
                         <path d="M7 1.5 8.545 5.06l3.88.563-2.808 2.735.663 3.863L7 10.5l-3.28 1.72.663-3.862L1.575 5.624l3.88-.563L7 1.5Z" stroke="rgba(255,255,255,0.4)" stroke-width="1.3" stroke-linejoin="round"/>
                       </svg>
@@ -221,26 +216,21 @@
 
                   <!-- Progress label -->
                   <div class="flex items-center justify-between">
-                    <p class="text-xs" style="color: rgba(255,255,255,0.5); font-family: var(--font-body);">5 / 10 pecsét</p>
-                    <p class="text-xs font-semibold" style="color: var(--color-accent); font-family: var(--font-body);">Még 5 a jutalmadhoz!</p>
+                    <p id="stamp-count" class="text-xs" style="color: rgba(255,255,255,0.5); font-family: var(--font-body);">5 / 10 pecsét</p>
+                    <p id="stamp-hint" class="text-xs font-semibold" style="color: var(--color-accent); font-family: var(--font-body);">Még 5 a jutalmadhoz!</p>
+                  </div>
+
+                  <!-- Star celebration (hidden until all collected) -->
+                  <div id="stamp-done" class="hidden flex items-center justify-center gap-2 py-1">
+                    <svg class="stamp-star" width="20" height="20" viewBox="0 0 48 48" fill="none">
+                      <path d="M24 4l6.18 12.52L44 18.52l-10 9.74 2.36 13.74L24 35.76 11.64 42l2.36-13.74-10-9.74 13.82-2L24 4Z" fill="#F59E0B"/>
+                    </svg>
+                    <p class="text-xs font-bold text-white" style="font-family: var(--font-heading);">Ingyenes kávé!</p>
+                    <svg class="stamp-star" width="20" height="20" viewBox="0 0 48 48" fill="none">
+                      <path d="M24 4l6.18 12.52L44 18.52l-10 9.74 2.36 13.74L24 35.76 11.64 42l2.36-13.74-10-9.74 13.82-2L24 4Z" fill="#F59E0B"/>
+                    </svg>
                   </div>
                 </div>
-
-                <!-- Scan CTA button on screen -->
-                <button
-                  class="w-full rounded-xl py-3 text-sm font-semibold text-white flex items-center justify-center gap-2"
-                  style="background: var(--color-primary); font-family: var(--font-heading); pointer-events: none;"
-                  tabindex="-1"
-                  aria-hidden="true"
-                >
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                    <rect x="2" y="2" width="4" height="4" rx="0.75" stroke="white" stroke-width="1.5"/>
-                    <rect x="10" y="2" width="4" height="4" rx="0.75" stroke="white" stroke-width="1.5"/>
-                    <rect x="2" y="10" width="4" height="4" rx="0.75" stroke="white" stroke-width="1.5"/>
-                    <path d="M10 10h1.5m2.5 0H12.5m0 0v1.5m0 2.5v-1.5m-2.5 1.5h4" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
-                  </svg>
-                  QR kód beolvasása
-                </button>
 
                 <!-- Recent activity -->
                 <div class="flex flex-col gap-2">
@@ -276,21 +266,6 @@
 </section>
 
 <style>
-  /* Dot grid overlay */
-  .hero-dot-grid {
-    background-image: radial-gradient(circle, var(--color-primary) 1px, transparent 1px);
-    background-size: 24px 24px;
-    opacity: 0.08;
-  }
-
-  /* Gradient text on headline accent */
-  .hero-gradient-text {
-    background: linear-gradient(135deg, var(--color-primary) 0%, #818CF8 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
   /* Phone float animation */
   @keyframes phone-float {
     0%, 100% { transform: translateY(0px); }
@@ -306,4 +281,66 @@
       animation: none;
     }
   }
+
+
+
+  @keyframes stamp-pop {
+    0% { transform: scale(0.3); opacity: 0; }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); opacity: 1; }
+  }
+
+  @keyframes star-spin {
+    0% { transform: scale(0) rotate(-60deg); opacity: 0; }
+    60% { transform: scale(1.3) rotate(10deg); opacity: 1; }
+    100% { transform: scale(1) rotate(0deg); opacity: 1; }
+  }
+
+  #stamp-done.show {
+    animation: stamp-pop 0.4s ease-out;
+  }
+
+  #stamp-done.show .stamp-star {
+    animation: star-spin 0.5s ease-out both;
+  }
+
+  #stamp-done.show .stamp-star:last-child {
+    animation-delay: 0.1s;
+  }
 </style>
+
+<script>
+  const TOTAL = 10;
+  const checkSvg = `<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7 5.5 10 11.5 4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+
+  const slots = document.querySelectorAll(".stamp-empty");
+  const countEl = document.getElementById("stamp-count");
+  const hintEl = document.getElementById("stamp-hint");
+  const doneEl = document.getElementById("stamp-done");
+  let filled = 5;
+
+  slots.forEach((slot) => {
+    slot.addEventListener("click", () => {
+      filled++;
+      slot.innerHTML = checkSvg;
+      slot.className = "w-full aspect-square rounded-lg flex items-center justify-center";
+      slot.removeAttribute("style");
+      slot.style.background = "var(--color-accent)";
+      slot.style.boxShadow = "0 2px 8px color-mix(in srgb, var(--color-accent) 50%, transparent)";
+      slot.style.animation = "stamp-pop 0.35s ease-out";
+
+      if (countEl) countEl.textContent = `${filled} / ${TOTAL} pecsét`;
+
+      if (filled >= TOTAL) {
+        if (hintEl) hintEl.textContent = "";
+        if (doneEl) {
+          doneEl.classList.remove("hidden");
+          doneEl.classList.add("show");
+        }
+      } else {
+        const remaining = TOTAL - filled;
+        if (hintEl) hintEl.textContent = `Még ${remaining} a jutalmadhoz!`;
+      }
+    }, { once: true });
+  });
+</script>

@@ -37,7 +37,7 @@ const customerSteps = [
 ];
 ---
 
-<section id="hogyan-mukodik" class="py-20" style="background-color: var(--color-surface);">
+<section id="hogyan-mukodik" class="py-24" style="background-color: var(--color-surface);">
   <div class="max-w-7xl mx-auto px-6">
 
     <div class="text-center mb-16">
@@ -49,14 +49,11 @@ const customerSteps = [
       </p>
     </div>
 
-    <div class="grid grid-cols-1 gap-10 lg:grid-cols-2">
+    <div class="grid grid-cols-1 gap-16 lg:grid-cols-2">
 
       <!-- Merchant column -->
-      <div
-        class="rounded-2xl border p-8 transition-all duration-300 ease-out hover:scale-[1.01] hover:shadow-md"
-        style="border-color: var(--color-border); background-color: var(--color-bg); border-top: 3px solid var(--color-primary);"
-      >
-        <div class="flex items-center gap-3 mb-8">
+      <div>
+        <div class="flex items-center gap-3 mb-10">
           <div class="flex h-8 w-8 items-center justify-center rounded-lg" style="background-color: var(--color-primary);">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
@@ -66,41 +63,35 @@ const customerSteps = [
           <h3 class="text-lg font-semibold" style="color: var(--color-text);">Kereskedőknek</h3>
         </div>
 
-        <ol class="space-y-0">
+        <ol class="flex flex-col">
           {merchantSteps.map((step, index) => (
-            <li class="flex gap-4">
-              <div class="flex flex-col items-center">
+            <li>
+              <div class="flex items-center gap-5">
                 <div
-                  class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full font-bold text-sm"
+                  class="flex h-14 w-14 shrink-0 items-center justify-center rounded-full font-bold text-lg"
                   style="background-color: var(--color-primary); color: white; box-shadow: 0 2px 8px color-mix(in srgb, var(--color-primary) 35%, transparent);"
                 >
                   {index + 1}
                 </div>
-                {index < merchantSteps.length - 1 && (
-                  <div class="mt-1 mb-1 w-px flex-1" style="background-color: var(--color-border); min-height: 2rem;"></div>
-                )}
+                <step.icon
+                  size={20}
+                  class="shrink-0"
+                  style="color: var(--color-primary);"
+                  aria-hidden="true"
+                />
+                <p class="text-base leading-snug" style="color: var(--color-text);">{step.text}</p>
               </div>
-              <div class="pt-2.5" style={index < merchantSteps.length - 1 ? "padding-bottom: 1.5rem;" : ""}>
-                <div class="flex items-center gap-2 mb-1">
-                  <step.icon
-                    size={22}
-                    style="color: var(--color-primary);"
-                    aria-hidden="true"
-                  />
-                </div>
-                <p class="text-sm leading-relaxed" style="color: var(--color-text);">{step.text}</p>
-              </div>
+              {index < merchantSteps.length - 1 && (
+                <div class="w-px h-8 ml-7" style="background-color: var(--color-border);"></div>
+              )}
             </li>
           ))}
         </ol>
       </div>
 
       <!-- Customer column -->
-      <div
-        class="rounded-2xl border p-8 transition-all duration-300 ease-out hover:scale-[1.01] hover:shadow-md"
-        style="border-color: var(--color-border); background-color: var(--color-bg); border-top: 3px solid var(--color-accent);"
-      >
-        <div class="flex items-center gap-3 mb-8">
+      <div>
+        <div class="flex items-center gap-3 mb-10">
           <div class="flex h-8 w-8 items-center justify-center rounded-lg" style="background-color: var(--color-accent);">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
@@ -110,30 +101,27 @@ const customerSteps = [
           <h3 class="text-lg font-semibold" style="color: var(--color-text);">Vásárlóknak</h3>
         </div>
 
-        <ol class="space-y-0">
+        <ol class="flex flex-col">
           {customerSteps.map((step, index) => (
-            <li class="flex gap-4">
-              <div class="flex flex-col items-center">
+            <li>
+              <div class="flex items-center gap-5">
                 <div
-                  class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full font-bold text-sm"
+                  class="flex h-14 w-14 shrink-0 items-center justify-center rounded-full font-bold text-lg"
                   style="background-color: var(--color-accent); color: white; box-shadow: 0 2px 8px color-mix(in srgb, var(--color-accent) 35%, transparent);"
                 >
                   {index + 1}
                 </div>
-                {index < customerSteps.length - 1 && (
-                  <div class="mt-1 mb-1 w-px flex-1" style="background-color: var(--color-border); min-height: 2rem;"></div>
-                )}
+                <step.icon
+                  size={20}
+                  class="shrink-0"
+                  style="color: var(--color-accent);"
+                  aria-hidden="true"
+                />
+                <p class="text-base leading-snug" style="color: var(--color-text);">{step.text}</p>
               </div>
-              <div class="pt-2.5" style={index < customerSteps.length - 1 ? "padding-bottom: 1.5rem;" : ""}>
-                <div class="flex items-center gap-2 mb-1">
-                  <step.icon
-                    size={22}
-                    style="color: var(--color-accent);"
-                    aria-hidden="true"
-                  />
-                </div>
-                <p class="text-sm leading-relaxed" style="color: var(--color-text);">{step.text}</p>
-              </div>
+              {index < customerSteps.length - 1 && (
+                <div class="w-px h-8 ml-7" style="background-color: var(--color-border);"></div>
+              )}
             </li>
           ))}
         </ol>
@@ -142,11 +130,3 @@ const customerSteps = [
     </div>
   </div>
 </section>
-
-<style>
-  @media (prefers-reduced-motion: reduce) {
-    div[class*="hover:scale"] {
-      transition: none;
-    }
-  }
-</style>

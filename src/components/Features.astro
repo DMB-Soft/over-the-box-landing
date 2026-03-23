@@ -36,11 +36,11 @@ const features = [
 
 <section
   id="funkciok"
-  class="py-20"
-  style="background: linear-gradient(160deg, var(--color-bg) 0%, color-mix(in srgb, var(--color-primary-light) 30%, var(--color-bg)) 100%);"
+  class="py-20 animate-on-scroll"
+  style="background-color: var(--color-bg);"
 >
   <div class="max-w-7xl mx-auto px-6">
-    <div class="text-center mb-16">
+    <div class="text-center mb-12">
       <h2
         class="text-4xl font-bold mb-4"
         style="font-family: var(--font-heading); color: var(--color-text);"
@@ -52,26 +52,26 @@ const features = [
       </p>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-      {features.map(({ Icon, title, description }) => (
+    <div class="max-w-2xl mx-auto flex flex-col">
+      {features.map(({ Icon, title, description }, index) => (
         <div
-          class="feature-card flex flex-col gap-4 rounded-2xl p-7 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-lg"
-          style="background-color: var(--color-surface); border: 1px solid var(--color-border);"
+          class="flex items-start gap-5 py-8"
+          style={index < features.length - 1 ? 'border-bottom: 1px solid var(--color-border);' : ''}
         >
           <div
-            class="icon-circle w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0 transition-all duration-300 ease-out"
+            class="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0"
             style="background-color: var(--color-primary-light);"
           >
             <Icon size={24} style="color: var(--color-primary);" />
           </div>
           <div>
             <h3
-              class="text-base font-semibold mb-1"
+              class="text-lg font-semibold mb-1"
               style="font-family: var(--font-heading); color: var(--color-text);"
             >
               {title}
             </h3>
-            <p class="text-sm leading-relaxed" style="color: var(--color-text-secondary);">
+            <p class="text-base leading-relaxed" style="color: var(--color-text-secondary);">
               {description}
             </p>
           </div>
@@ -80,19 +80,3 @@ const features = [
     </div>
   </div>
 </section>
-
-<style>
-  .feature-card:hover .icon-circle {
-    box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-primary) 15%, transparent),
-                0 4px 12px color-mix(in srgb, var(--color-primary) 20%, transparent);
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .feature-card {
-      transition: none;
-    }
-    .icon-circle {
-      transition: none;
-    }
-  }
-</style>
