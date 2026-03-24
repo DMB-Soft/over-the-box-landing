@@ -1,7 +1,7 @@
-# Over the Box — Landing Page
+# Kuppo — Landing Page
 
 ## What is this?
-Marketing landing page for Over the Box, a digital loyalty stamp card platform for small businesses (cafés, bakeries, salons, restaurants). Separate from the main React PWA app.
+Marketing landing page for Kuppo, a digital loyalty stamp card platform for small businesses (cafés, bakeries, salons, restaurants). Separate from the main React PWA app.
 
 ## Task
 Build the landing page from scratch using Astro + Tailwind CSS v4.

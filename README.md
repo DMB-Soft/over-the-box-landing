@@ -1,2 +1,2 @@
-# over-the-box-landing
-Landing page for Over the Box — digital loyalty card platform
+# kuppo-landing
+Landing page for Kuppo — digital loyalty card platform
