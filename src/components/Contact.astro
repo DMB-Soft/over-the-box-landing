@@ -167,12 +167,92 @@ import Send from "@lucide/astro/icons/send";
 </style>
 
 <script>
+  import { supabase } from "../lib/supabase.ts";
+
   const form = document.getElementById("contact-form") as HTMLFormElement | null;
   const successMsg = document.getElementById("contact-success");
+  const submitBtn = form?.querySelector("button[type=submit]") as HTMLButtonElement | null;
 
-  form?.addEventListener("submit", (e) => {
+  const FUNCTION_URL = `${import.meta.env.PUBLIC_SUPABASE_URL}/functions/v1/send-contact-email`;
+  const ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY as string;
+
+  function setLoading(loading: boolean) {
+    if (!submitBtn) return;
+    submitBtn.disabled = loading;
+    submitBtn.textContent = loading ? "Küldés…" : "Küldés";
+  }
+
+  function showFieldError(fieldId: string, msg: string) {
+    const field = document.getElementById(fieldId);
+    if (!field) return;
+    field.style.borderColor = "#dc2626";
+    field.style.boxShadow = "0 0 0 2px #dc2626";
+    let errEl = document.getElementById(`${fieldId}-error`);
+    if (!errEl) {
+      errEl = document.createElement("p");
+      errEl.id = `${fieldId}-error`;
+      errEl.className = "mt-1 text-xs font-medium";
+      errEl.style.color = "#dc2626";
+      errEl.setAttribute("role", "alert");
+      field.parentNode?.appendChild(errEl);
+    }
+    errEl.textContent = msg;
+  }
+
+  function clearFieldErrors() {
+    ["contact-name", "contact-email", "contact-message"].forEach((id) => {
+      const field = document.getElementById(id);
+      if (field) {
+        field.style.borderColor = "";
+        field.style.boxShadow = "";
+      }
+      document.getElementById(`${id}-error`)?.remove();
+    });
+  }
+
+  form?.addEventListener("submit", async (e) => {
     e.preventDefault();
-    form.classList.add("hidden");
-    successMsg?.classList.remove("hidden");
+    clearFieldErrors();
+
+    const nameVal = (document.getElementById("contact-name") as HTMLInputElement)?.value.trim();
+    const emailVal = (document.getElementById("contact-email") as HTMLInputElement)?.value.trim();
+    const businessVal = (document.getElementById("contact-business") as HTMLInputElement)?.value.trim();
+    const messageVal = (document.getElementById("contact-message") as HTMLTextAreaElement)?.value.trim();
+
+    let hasError = false;
+    if (!nameVal) { showFieldError("contact-name", "A neved megadása kötelező."); hasError = true; }
+    if (!emailVal) { showFieldError("contact-email", "Az e-mail cím megadása kötelező."); hasError = true; }
+    if (!messageVal) { showFieldError("contact-message", "Az üzenet megadása kötelező."); hasError = true; }
+    if (hasError) return;
+
+    setLoading(true);
+
+    try {
+      const res = await fetch(FUNCTION_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "apikey": ANON_KEY,
+        },
+        body: JSON.stringify({
+          name: nameVal,
+          email: emailVal,
+          business: businessVal || undefined,
+          message: messageVal,
+        }),
+      });
+
+      if (!res.ok) {
+        throw new Error(`HTTP ${res.status}`);
+      }
+
+      form.classList.add("hidden");
+      successMsg?.classList.remove("hidden");
+    } catch (err) {
+      console.error("Contact form error:", err);
+      showFieldError("contact-message", "Valami hiba történt. Kérlek, próbáld újra.");
+    } finally {
+      setLoading(false);
+    }
   });
 </script>
