@@ -1,5 +1,6 @@
 ---
 import Send from "@lucide/astro/icons/send";
+const web3formsKey = import.meta.env.PUBLIC_WEB3FORMS_KEY;
 ---
 
 <section id="kapcsolat" class="contact-section py-24 animate-on-scroll">
@@ -21,7 +22,7 @@ import Send from "@lucide/astro/icons/send";
       >
 
         <!-- Form -->
-        <form id="contact-form" novalidate>
+        <form id="contact-form" data-key={web3formsKey} novalidate>
           <div class="flex flex-col gap-5">
 
             <div class="flex flex-col gap-1.5">
@@ -171,7 +172,7 @@ import Send from "@lucide/astro/icons/send";
   const successMsg = document.getElementById("contact-success");
   const submitBtn = form?.querySelector("button[type=submit]") as HTMLButtonElement | null;
 
-  const WEB3FORMS_KEY = import.meta.env.PUBLIC_WEB3FORMS_KEY as string;
+  const WEB3FORMS_KEY = form?.dataset.key ?? "";
 
   function setLoading(loading: boolean) {
     if (!submitBtn) return;
