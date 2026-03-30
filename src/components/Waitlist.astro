@@ -131,8 +131,6 @@
 </style>
 
 <script>
-  import { supabase } from "../lib/supabase.ts";
-
   const form = document.getElementById("waitlist-form") as HTMLFormElement | null;
   const successEl = document.getElementById("waitlist-success");
   const errorEl = document.getElementById("waitlist-error");
@@ -140,6 +138,8 @@
   const btnLabel = document.getElementById("waitlist-btn-label");
   const btnIcon = document.getElementById("waitlist-btn-icon");
   const spinner = document.getElementById("waitlist-spinner");
+
+  const WEB3FORMS_KEY = import.meta.env.PUBLIC_WEB3FORMS_KEY as string;
 
   function setLoading(loading: boolean) {
     if (!submitBtn) return;
@@ -169,7 +169,7 @@
     const nameInput = document.getElementById("waitlist-name") as HTMLInputElement;
 
     const email = emailInput?.value.trim();
-    const name = nameInput?.value.trim() || null;
+    const name = nameInput?.value.trim() || "";
 
     if (!email) {
       showError("Kérlek, adj meg egy e-mail címet.");
@@ -179,24 +179,33 @@
 
     setLoading(true);
 
-    const { error } = await supabase
-      .from("waitlist")
-      .insert({ email, name });
+    try {
+      const formData = new FormData();
+      formData.append("access_key", WEB3FORMS_KEY);
+      formData.append("subject", "📋 Kuppo — Új várólista feliratkozás");
+      formData.append("from_name", "Kuppo Landing");
+      formData.append("email", email);
+      if (name) formData.append("name", name);
+      formData.append("botcheck", "");
 
-    setLoading(false);
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      });
 
-    if (error) {
-      // Postgres unique violation code
-      if (error.code === "23505") {
-        showError("Ezzel az e-mail címmel már feliratkoztál!");
-      } else {
-        showError("Valami hiba történt. Kérlek, próbáld újra.");
-        console.error("Waitlist insert error:", error);
+      const data = await res.json();
+
+      if (!data.success) {
+        throw new Error(data.message || "Web3Forms error");
       }
-      return;
-    }
 
-    form.classList.add("hidden");
-    successEl?.classList.remove("hidden");
+      form.classList.add("hidden");
+      successEl?.classList.remove("hidden");
+    } catch (err) {
+      showError("Valami hiba történt. Kérlek, próbáld újra.");
+      console.error("Waitlist submit error:", err);
+    } finally {
+      setLoading(false);
+    }
   });
 </script>

@@ -167,14 +167,11 @@ import Send from "@lucide/astro/icons/send";
 </style>
 
 <script>
-  import { supabase } from "../lib/supabase.ts";
-
   const form = document.getElementById("contact-form") as HTMLFormElement | null;
   const successMsg = document.getElementById("contact-success");
   const submitBtn = form?.querySelector("button[type=submit]") as HTMLButtonElement | null;
 
-  const FUNCTION_URL = `${import.meta.env.PUBLIC_SUPABASE_URL}/functions/v1/send-contact-email`;
-  const ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY as string;
+  const WEB3FORMS_KEY = import.meta.env.PUBLIC_WEB3FORMS_KEY as string;
 
   function setLoading(loading: boolean) {
     if (!submitBtn) return;
@@ -228,22 +225,25 @@ import Send from "@lucide/astro/icons/send";
     setLoading(true);
 
     try {
-      const res = await fetch(FUNCTION_URL, {
+      const formData = new FormData();
+      formData.append("access_key", WEB3FORMS_KEY);
+      formData.append("subject", "📬 Kuppo — Új kapcsolatfelvétel");
+      formData.append("from_name", "Kuppo Landing");
+      formData.append("name", nameVal);
+      formData.append("email", emailVal);
+      if (businessVal) formData.append("business", businessVal);
+      formData.append("message", messageVal);
+      formData.append("botcheck", "");
+
+      const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "apikey": ANON_KEY,
-        },
-        body: JSON.stringify({
-          name: nameVal,
-          email: emailVal,
-          business: businessVal || undefined,
-          message: messageVal,
-        }),
+        body: formData,
       });
 
-      if (!res.ok) {
-        throw new Error(`HTTP ${res.status}`);
+      const data = await res.json();
+
+      if (!data.success) {
+        throw new Error(data.message || "Web3Forms error");
       }
 
       form.classList.add("hidden");
