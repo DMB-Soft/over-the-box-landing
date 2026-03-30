@@ -22,7 +22,11 @@ const web3formsKey = import.meta.env.PUBLIC_WEB3FORMS_KEY;
       >
 
         <!-- Form -->
-        <form id="contact-form" data-key={web3formsKey} novalidate>
+        <form id="contact-form" novalidate>
+          <input type="hidden" name="access_key" value={web3formsKey} />
+          <input type="hidden" name="subject" value="📬 Kuppo — Új kapcsolatfelvétel" />
+          <input type="hidden" name="from_name" value="Kuppo Landing" />
+          <input type="checkbox" name="botcheck" class="hidden" style="display:none" aria-hidden="true" />
           <div class="flex flex-col gap-5">
 
             <div class="flex flex-col gap-1.5">
@@ -172,8 +176,6 @@ const web3formsKey = import.meta.env.PUBLIC_WEB3FORMS_KEY;
   const successMsg = document.getElementById("contact-success");
   const submitBtn = form?.querySelector("button[type=submit]") as HTMLButtonElement | null;
 
-  const WEB3FORMS_KEY = form?.dataset.key ?? "";
-
   function setLoading(loading: boolean) {
     if (!submitBtn) return;
     submitBtn.disabled = loading;
@@ -214,7 +216,6 @@ const web3formsKey = import.meta.env.PUBLIC_WEB3FORMS_KEY;
 
     const nameVal = (document.getElementById("contact-name") as HTMLInputElement)?.value.trim();
     const emailVal = (document.getElementById("contact-email") as HTMLInputElement)?.value.trim();
-    const businessVal = (document.getElementById("contact-business") as HTMLInputElement)?.value.trim();
     const messageVal = (document.getElementById("contact-message") as HTMLTextAreaElement)?.value.trim();
 
     let hasError = false;
@@ -226,19 +227,9 @@ const web3formsKey = import.meta.env.PUBLIC_WEB3FORMS_KEY;
     setLoading(true);
 
     try {
-      const formData = new FormData();
-      formData.append("access_key", WEB3FORMS_KEY);
-      formData.append("subject", "📬 Kuppo — Új kapcsolatfelvétel");
-      formData.append("from_name", "Kuppo Landing");
-      formData.append("name", nameVal);
-      formData.append("email", emailVal);
-      if (businessVal) formData.append("business", businessVal);
-      formData.append("message", messageVal);
-      formData.append("botcheck", "");
-
       const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        body: formData,
+        body: new FormData(form),
       });
 
       const data = await res.json();
