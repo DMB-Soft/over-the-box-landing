@@ -33,7 +33,11 @@ const web3formsKey = import.meta.env.PUBLIC_WEB3FORMS_KEY;
       </p>
 
       <!-- Form -->
-      <form id="waitlist-form" data-key={web3formsKey} novalidate class="relative z-10">
+      <form id="waitlist-form" novalidate class="relative z-10">
+        <input type="hidden" name="access_key" value={web3formsKey} />
+        <input type="hidden" name="subject" value="📋 Kuppo — Új várólista feliratkozás" />
+        <input type="hidden" name="from_name" value="Kuppo Landing" />
+        <input type="checkbox" name="botcheck" class="hidden" style="display:none" aria-hidden="true" />
         <div class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto mb-3">
           <input
             id="waitlist-name"
@@ -140,8 +144,6 @@ const web3formsKey = import.meta.env.PUBLIC_WEB3FORMS_KEY;
   const btnIcon = document.getElementById("waitlist-btn-icon");
   const spinner = document.getElementById("waitlist-spinner");
 
-  const WEB3FORMS_KEY = form?.dataset.key ?? "";
-
   function setLoading(loading: boolean) {
     if (!submitBtn) return;
     submitBtn.disabled = loading;
@@ -167,10 +169,8 @@ const web3formsKey = import.meta.env.PUBLIC_WEB3FORMS_KEY;
     clearError();
 
     const emailInput = document.getElementById("waitlist-email") as HTMLInputElement;
-    const nameInput = document.getElementById("waitlist-name") as HTMLInputElement;
 
     const email = emailInput?.value.trim();
-    const name = nameInput?.value.trim() || "";
 
     if (!email) {
       showError("Kérlek, adj meg egy e-mail címet.");
@@ -181,17 +181,9 @@ const web3formsKey = import.meta.env.PUBLIC_WEB3FORMS_KEY;
     setLoading(true);
 
     try {
-      const formData = new FormData();
-      formData.append("access_key", WEB3FORMS_KEY);
-      formData.append("subject", "📋 Kuppo — Új várólista feliratkozás");
-      formData.append("from_name", "Kuppo Landing");
-      formData.append("email", email);
-      if (name) formData.append("name", name);
-      formData.append("botcheck", "");
-
       const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        body: formData,
+        body: new FormData(form),
       });
 
       const data = await res.json();
